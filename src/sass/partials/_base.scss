@@ -1,0 +1,45 @@
+.toggle-break {
+	clear: left;
+}
+.main {
+	min-height: 600px;
+}
+
+.branding {
+	margin-bottom: 1em;
+}
+
+nav.navbar {
+	background-color: #701f50;
+}
+
+
+.navbar-dark #octo > path {
+	fill: white;
+}
+.branding #octo > path {
+	fill: #701f50;
+}
+
+
+
+
+
+.branding #octo {
+	height: 100px;
+	width: 100px;
+}
+.navbar-brand #octo {
+	height: 21px;
+	width: 21px;
+	display: inline-block;
+	margin-right: 0.5em;
+}
+
+a {
+	color: #701f50;
+}
+
+body {
+	// background-color: black;
+}

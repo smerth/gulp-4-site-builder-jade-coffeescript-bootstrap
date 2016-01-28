@@ -1,0 +1,24 @@
+// style.scss
+// ==============
+
+//Compass imports
+@import "compass";
+@import "compass/reset";
+@import "compass/css3/box-shadow";
+
+/*
+Pull in Bootstrap 4 from bower_components.  Variables must be imported before 
+Bootstrap if you want to over-ride bootstrap default variables
+*/
+@import "../../bower_components/bootstrap/scss/bootstrap.scss";
+
+// Vendor partials
+@import "vendor/offcanvas";
+
+//Core partials
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/modules";
+@import "partials/base";
+
+
