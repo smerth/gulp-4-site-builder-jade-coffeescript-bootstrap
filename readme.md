@@ -9,7 +9,7 @@ This is a Gulp build process for a web app using:
 - Bower: to download and manage project dependencies.
 - Gulp: to execute the build
 
-[Related links](#links)
+[Useful links](#links)
 
 ## Built demo site
 
