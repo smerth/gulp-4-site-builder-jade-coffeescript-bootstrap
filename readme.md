@@ -1,43 +1,98 @@
-# Build - Gulp, Bower, Bootstrap 4, Jade, and Coffee
+# Use Gulp to build a Bootstrap 4 Site
 
-## What does this project do?
-This is a Gulp build process for a web app using:
 
-- Jade: for writing HTML templates.
-- CoffeeScript: for quick writing of Javascript.
-- Bootstrap 4: for quick styling using SASS.
-- Bower: to download and manage project dependencies.
-- Gulp: to execute the build
 
-[Useful links](#links)
+> This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site.  Gulp-gh-Pages is used to push the staging build to github pages. HTML is written using Jade syntax.  Javascript can be written in vanilla js or Coffeescript.  A Jade template manages swapping the base url so the navigation links work on localhost and on github pages.
+>
+> A little bit of Bootstrap 4 comes out of the box:
+>
+> 1. Collapsing sidebar navigation for mobile
+> 2. Flexbox enabled
+> 3. Sass
+> 4. Example page of equal height cards
 
-## Built demo site
 
-[Solid Octo Garbanzo](http://smerth.github.io/build-gulp-bower-bootstrap4-jade-coffee )
 
-## Usage
+## Demo Site
 
--  Download the repository.
--  Make sure you have the following installed globally:
-    -  node.js
-    -  npm
-    -  ruby
-    -  compass
-    -  bower
+[Demo](http://smerth.github.io/Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/ )
 
--  cd into the project folder and run: `npm install`. This will install everything listed in the `package.json` file.
+## Requirements
 
--  run `gulp install-assets`. This will cause Bower to go out and fetch the asset dependencies listed in `bower.json`
+Make sure you have the following installed globally:
 
--  run `gulp`. This runs a collection of tasks and serves up the built development folder contents at: http://localhost:8080.
+- node.js
+- npm
+- ruby
+- compass
+- bower
 
--  When the development site looks good, run `gulp stage`. This will compress the files in the `development` folder into the `staging` folder and serve up the `staging` folder at: http://localhost:8001.
+## Install this repo
 
--  The main point is write in `src`. Debug in `development`. Then compress to `staging` and then push `staging` to the live server.
+
+
+```bash
+cd Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/
+```
+
+Install npm assets
+
+```bash
+npm install
+```
+
+Install bower assets
+
+```bash
+gulp bower
+```
+
+Transfer bower main assets to ```src/vendor```
+
+```bash
+gulp vendor
+```
+
+**Serve the dev build**
+
+```bash
+gulp
+```
+
+This runs a collection of tasks and serves up the built development folder contents at: http://localhost:8080.
+
+**Build the staging folder**
+
+```bash
+gulp stage
+```
+
+When the development site looks good, run `gulp stage`. This will compress the files in the `development` folder into the `staging` folder and serve up the `staging` folder at: http://localhost:8001.
+
+### Push the staging folder to Github Pages
+
+Set up your github repo according to [this](https://github.com/smerth/gulp-gh-pages_test#deploying-to-github)
+
+Then deploy (you have to have run ```gulp stage``` at least once...)
+
+```bash
+gulp deploy
+```
+
+
+
+## What's the point?
+
+> The main point is to write code in `src`. Debug in `development`. Then compress to `staging` and then push `staging` to the live server.
+>
+> Actually the point of this demo was to learn gulp...
+
+
 
 ## File structure
 
 The installation and build process will add the following folders and contents:
+
 - bower_components
 - src/vendor
 - builds/*
@@ -48,6 +103,7 @@ The jade files and folder structure in `src/templates/sections` will be replicat
 CoffeeScript files will be processed to JavaScript prior to all JavaScript files being concatenated.
 
 ### Misc. files
+
 .gitignore - useful to exclude staging/ if you want to track that folder separately and push it somewhere else.
 
 .atomignore - useful to exclude annoying files from the Atom finder side-bar if you use Atom Text Editor
@@ -61,6 +117,7 @@ config.rb - useful if you want to explicitly define your ruby and gems for use w
 ### `gulp`
 
 Does the following:
+
 - `connectdev` - serves the contents of the development folder at: http://localhost:8080
 - `vendor` - moves the main files from bower_components to src_vendor, main files are defined in each dependancies package.json file.
 - `coffee` - compiles CoffeeScript files to js files and places them in 'src/scripts'
@@ -69,10 +126,10 @@ Does the following:
 - `images` - compresses image files and moves them to development and staging.
 - `watchdev` - watches for changes to any of the folders your likely to edit during development and then runs related tasks when changes are detected and reloads the browser.
 
-
 ### `gulp install-assets`
 
 Does the following:
+
 - bower - download bower dependancies to bower_components
 - vendor - move bower dependancy main assets to vendor
 
@@ -105,8 +162,7 @@ Concatenates js files from `src/vendor` and `scripts/js`.  You can control the o
 
 Compiles Jade into HTML.  The option: `{base: }` tells `gulp.dest` to recreate the directory structure found inside the specified base folder.  So you can build directory structure in the sections folder inside templates and it will be reflected in the `development` and `staging` folders
 
-<a name="compass"></a>
-`gulp compass`
+[gulp compass](#compass)
 
 This task will compile any SASS you write in `src/sass` with all of the bootstrap scss and outputs a single css file to `development/css`
 
@@ -132,63 +188,50 @@ Compress JS from development to staging
 
 Compress css from development to staging
 
-
 ## Is it working?
 
 ### Check the following:
+
 - Site should be up and running at:  http://localhost:8080
 - Bootstrap 4 should be working
 - Scripts should be loaded and working (check responsive side-bar menu, errors on the console)
 - In terminal gulp should be watching for changes to the code
 - Writing changes to: sass stylesheets, jade templates, coffeescripts, js scripts, image files,
-should result in a live reload with changes immediately visible in the browser.
+  should result in a live reload with changes immediately visible in the browser.
 - The development folder should contain un-compressed css and js files. with comments and maps intact.
 - After running `gulp stage` the development folder contents should be compressed and the base url should be swapped out according to the switch in the `base_url.jade` include.
 
+## Useful Links
 
-<a name="links"></a>
-# Useful Links
-
-## Build System
+### Build System
 
 - [Node.js](https://nodejs.org/en/)
-
 - [NPM](https://www.npmjs.com)
-
 - [Gulp](http://gulpjs.com)
-
 - [Bower](http://bower.io)
 
-## Write HTML
+### Write HTML
 
 - [Jade Language](http://jade-lang.com)
 
-## Write JavaScript
+### Write JavaScript
 
 - [CoffeeScript](http://coffeescript.org)
 
-## Write Style
+### Write Style
 
 - [SASS](http://sass-lang.com)
-
 - [Bootstrap](http://getbootstrap.com)
-
 - [Bootstrap 4](http://v4-alpha.getbootstrap.com)
-
 
 ### Ditch Bootstrap and go DIY
 
 - [Compass](http://compass-style.org)
-
 - [Susy](http://susy.oddbird.net)
-
 - [Breakpoint](https://github.com/lesjames/Breakpoint)
-
 
 ### Needed for Compass
 
 - [Ruby](https://www.ruby-lang.org/en/)
-
 - [Ruby Gems](https://rubygems.org)
-
-- [chruby](https://github.com/postmodern/chruby)
+- [chruby
