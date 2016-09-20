@@ -230,4 +230,5 @@ Compress css from development to staging
 
 - [Ruby](https://www.ruby-lang.org/en/)
 - [Ruby Gems](https://rubygems.org)
-- [chruby
+- [chruby](https://github.com/postmodern/chruby)
+
