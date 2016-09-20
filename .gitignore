@@ -1,9 +1,23 @@
+# MacOS Junk
 .DS_Store
+.tmp
+
+# Editor config
 *.sublime-project
 *.sublime-workspace
-.tmp
+
+# caches
 .sass-cache
+
+# modules
 node_modules
 bower_components
+
+# bower main components
 src/vendor
-builds/development
+
+# all builds
+builds/**/*
+
+# Gulp gh-pages 
+.publish

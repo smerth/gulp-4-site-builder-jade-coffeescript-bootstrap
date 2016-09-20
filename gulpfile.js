@@ -19,6 +19,7 @@
         cssnano        = require('gulp-cssnano'),
         sourcemaps     = require('gulp-sourcemaps'),
         rename         = require('gulp-rename'),
+        deploy = require('gulp-gh-pages'),
         mainBowerFiles = require('main-bower-files');
 
 // Path variables
@@ -222,7 +223,13 @@ gulp.task('cssnano', function () {
         .pipe(gulp.dest(staging + '/css'));
 });
 
-
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./builds/staging/**/*")
+    .pipe(deploy())
+});
 
 /*
 gulp install assets runs:
