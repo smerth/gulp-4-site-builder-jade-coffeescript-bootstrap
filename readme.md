@@ -104,7 +104,7 @@ CoffeeScript files will be processed to JavaScript prior to all JavaScript files
 
 .atomignore - useful to exclude annoying files from the Atom finder side-bar if you use Atom Text Editor
 
-config.rb - useful if you want to explicitly define your ruby and gems for use with compass to process SASS. ([see note below](#compass))
+config.rb - useful if you want to explicitly define your ruby and gems for use with compass to process SASS.
 
 .ruby-version - you might want to specify a ruby-version (in which case chruby is nice way to control your ruby version on a per project basis.)
 
@@ -158,7 +158,7 @@ Concatenates js files from `src/vendor` and `scripts/js`.  You can control the o
 
 Compiles Jade into HTML.  The option: `{base: }` tells `gulp.dest` to recreate the directory structure found inside the specified base folder.  So you can build directory structure in the sections folder inside templates and it will be reflected in the `development` and `staging` folders
 
-[gulp compass](#compass)
+`gulp compass`
 
 This task will compile any SASS you write in `src/sass` with all of the bootstrap scss and outputs a single css file to `development/css`
 
