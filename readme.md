@@ -2,7 +2,7 @@
 
 
 
-> This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site.  Gulp-gh-Pages is used to push the staging build to github pages. HTML is written using Jade syntax.  Javascript can be written in vanilla js or Coffeescript.  A Jade template manages swapping the base url so the navigation links work on localhost and on github pages.
+> This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site.  Gulp-gh-Pages is used to push the staging build to github pages. See it here: [Demo](http://smerth.github.io/Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/ ).  HTML is written using Jade syntax.  Javascript can be written in vanilla js or Coffeescript.  A Jade template manages swapping the base url so the navigation links work on localhost and on github pages.
 >
 > A little bit of Bootstrap 4 comes out of the box:
 >
@@ -12,10 +12,6 @@
 > 4. Example page of equal height cards
 
 
-
-## Demo Site
-
-[Demo](http://smerth.github.io/Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/ )
 
 ## Requirements
 
@@ -69,7 +65,7 @@ gulp stage
 
 When the development site looks good, run `gulp stage`. This will compress the files in the `development` folder into the `staging` folder and serve up the `staging` folder at: http://localhost:8001.
 
-### Push the staging folder to Github Pages
+**Push the staging folder to Github Pages**
 
 Set up your github repo according to [this](https://github.com/smerth/gulp-gh-pages_test#deploying-to-github)
 
