@@ -1,17 +1,19 @@
 # Use Gulp to build a Bootstrap 4 Site
 
+![App Screenshot](Screenshot.jpg)
 
-
-> This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site.  Gulp-gh-Pages is used to push the staging build to github pages. See it here: [Demo](http://smerth.github.io/Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/ ).  HTML is written using Jade syntax.  Javascript can be written in vanilla js or Coffeescript.  A Jade template manages swapping the base url so the navigation links work on localhost and on github pages.
+> #### This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site with the following features.
+> - HTML is written using Jade syntax.  
+> - Write vanilla Javascript or Coffeescript.  
+> - A Jade swaps a template with a base url so the navigation links work for the development (localhost) build and staging (github pages) build.
 >
-> A little bit of Bootstrap 4 comes out of the box:
+> Bootstrap 4 starter template:
 >
 > 1. Collapsing sidebar navigation for mobile
 > 2. Flexbox enabled
 > 3. Sass
 > 4. Example page of equal height cards
-
-
+ 
 
 ## Requirements
 
@@ -76,13 +78,12 @@ gulp deploy
 ```
 
 
+## Development Worflow
 
-## What's the point?
-
-> The main point is to write code in `src`. Debug in `development`. Then compress to `staging` and then push `staging` to the live server.
->
-> Actually the point of this demo was to learn gulp...
-
+> Write code in `src`. 
+> Develop and Debug in `development` mode. 
+> Compress site to `staging` and then 
+> Push `staging` to the live server.
 
 
 ## File structure
