@@ -1,13 +1,19 @@
-a.navbar-brand(href="index.html")
-	include ../logo.svg.jade 
-	| Code Notes
-ul.nav.navbar-nav
-	li.nav-item.active
-		a(href="index.html").nav-link Home
-	li.nav-item
-		a(href="sections/bootstrap/bootstrap4.html").nav-link Bootstrap 4
-	li.nav-item
-		a(href="sections/about/about-us.html").nav-link About Us
-	li.nav-item
-		a(href="sections/contact/contact-us.html").nav-link Contact Us
-		
+nav.mainnav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+	a.navbar-brand(href="index.html")
+		include ../logo.svg.jade 
+		| Code Notes
+	button(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler
+		span.navbar-toggler-icon
+	
+	div.collapse.navbar-collapse#navbarSupportedContent
+		ul.navbar-nav.mr-auto
+			li.nav-item.active
+				a(href="index.html").nav-link Home
+					span.sr-only (current)
+			li.nav-item
+				a(href="sections/bootstrap/bootstrap4.html").nav-link Bootstrap 4
+			li.nav-item
+				a(href="sections/about/about-us.html").nav-link About Us
+			li.nav-item
+				a(href="sections/contact/contact-us.html").nav-link Contact Us
+				

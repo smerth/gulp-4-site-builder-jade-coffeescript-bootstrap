@@ -2,21 +2,13 @@
   "name": "php_mysql_javascript_html5_aio_for_dummies",
   "description": "Study site based on PHP, mysql, javascript, & html5 all-in-one for dummies",
   "main": "gulpfile.js",
-  "authors": [
-    "smerth"
-  ],
+  "authors": ["smerth"],
   "license": "MIT",
   "homepage": "https://github.com/smerth/ideal-octo-guide",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
-    "jquery": "~2.2.0",
-    "bootstrap": "v4.0.0-alpha.2"
+    "jquery": "^3.0.0",
+    "bootstrap": "^4.0.0"
   }
 }

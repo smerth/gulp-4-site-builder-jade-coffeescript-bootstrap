@@ -21,15 +21,15 @@ html(lang="en")
 		block script
 	
 	body
-		nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
-			.container
-				include ../menus/navbar
+		
 
 		.container.main
+			include ../menus/navbar
+			
 			.row.row-offcanvas.row-offcanvas-left
 				.col-xs-12.col-sm-9.col-sm-push-3
 					p.pull-xs-left.hidden-sm-up
-						button.btn.btn-primary.btn-xs(type="button", data-toggle="offcanvas") Toggle nav
+						button.offcanvas-button.btn.btn-primary.btn-xs(type="button", data-toggle="offcanvas") Toggle nav
 					hr.toggle-break.hidden-sm-up
 					
 					include ../header
