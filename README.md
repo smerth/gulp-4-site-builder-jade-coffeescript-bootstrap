@@ -1,10 +1,11 @@
 # Use Gulp to build a Bootstrap 4 Site
 
-![App Screenshot](Screenshot.jpg)
+![App Screenshot](https://raw.githubusercontent.com/smerth/bootstrap-jade-and-coffeescript-with-gulp-and-bower/master/screenshot.png)
 
 > #### This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site with the following features.
-> - HTML is written using Jade syntax.  
-> - Write vanilla Javascript or Coffeescript.  
+>
+> - HTML is written using Jade syntax.
+> - Write vanilla Javascript or Coffeescript.
 > - A Jade swaps a template with a base url so the navigation links work for the development (localhost) build and staging (github pages) build.
 >
 > Bootstrap 4 starter template:
@@ -13,7 +14,6 @@
 > 2. Flexbox enabled
 > 3. Sass
 > 4. Example page of equal height cards
- 
 
 ## Requirements
 
@@ -26,8 +26,6 @@ Make sure you have the following installed globally:
 - bower
 
 ## Install this repo
-
-
 
 ```bash
 cd Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/
@@ -45,7 +43,7 @@ Install bower assets
 gulp bower
 ```
 
-Transfer bower main assets to ```src/vendor```
+Transfer bower main assets to `src/vendor`
 
 ```bash
 gulp vendor
@@ -71,20 +69,18 @@ When the development site looks good, run `gulp stage`. This will compress the f
 
 Set up your github repo according to [this](https://github.com/smerth/gulp-gh-pages_test#deploying-to-github)
 
-Then deploy (you have to have run ```gulp stage``` at least once...)
+Then deploy (you have to have run `gulp stage` at least once...)
 
 ```bash
 gulp deploy
 ```
 
-
 ## Development Worflow
 
-> Write code in `src`. 
-> Develop and Debug in `development` mode. 
-> Compress site to `staging` and then 
+> Write code in `src`.
+> Develop and Debug in `development` mode.
+> Compress site to `staging` and then
 > Push `staging` to the live server.
-
 
 ## File structure
 
@@ -92,7 +88,7 @@ The installation and build process will add the following folders and contents:
 
 - bower_components
 - src/vendor
-- builds/*
+- builds/\*
 - node_modules
 
 The jade files and folder structure in `src/templates/sections` will be replicated in HTML in the `builds/development` and `builds/staging` folders by Gulp.
@@ -135,17 +131,15 @@ Does the following:
 The purpose of gulp stage is move files from development to staging while minifying,
 compressing, removing maps and comments...
 
-
-
 ### Other gulp tasks
 
 `gulp bower`
 
-Downloads and installs the libraries listed as dependencies in bower.json file. Normally you would only run this once when setting up,  or after including a new Bower dependency.
+Downloads and installs the libraries listed as dependencies in bower.json file. Normally you would only run this once when setting up, or after including a new Bower dependency.
 
 `gulp vendor`
 
- Moves only the main Bower dependencies to `src/vendor`  In this build the Javascript processing tasks rely on the .js files (jquery.js and Bootstrap.js) being in `src/vendor`. (You'll also see bootstrap.scss is also moved to `src/vendor` but in fact that  bootstrap.scss is referenced from bower_components in style.scss.  That way all of Boostrap's partial .scss files can be pulled in by Compass... there are alot of ways of organizing the bootstrap styles... this is just one way...)
+Moves only the main Bower dependencies to `src/vendor` In this build the Javascript processing tasks rely on the .js files (jquery.js and Bootstrap.js) being in `src/vendor`. (You'll also see bootstrap.scss is also moved to `src/vendor` but in fact that bootstrap.scss is referenced from bower_components in style.scss. That way all of Boostrap's partial .scss files can be pulled in by Compass... there are alot of ways of organizing the bootstrap styles... this is just one way...)
 
 `gulp coffee`
 
@@ -153,35 +147,35 @@ Processes CoffeeScript files into js files and places them in the `src/js` folde
 
 `gulp js`
 
-Concatenates js files from `src/vendor` and `scripts/js`.  You can control the order of Concatenation by changing the jsSource variable.
+Concatenates js files from `src/vendor` and `scripts/js`. You can control the order of Concatenation by changing the jsSource variable.
 
 `gulp jade`
 
-Compiles Jade into HTML.  The option: `{base: }` tells `gulp.dest` to recreate the directory structure found inside the specified base folder.  So you can build directory structure in the sections folder inside templates and it will be reflected in the `development` and `staging` folders
+Compiles Jade into HTML. The option: `{base: }` tells `gulp.dest` to recreate the directory structure found inside the specified base folder. So you can build directory structure in the sections folder inside templates and it will be reflected in the `development` and `staging` folders
 
 `gulp compass`
 
 This task will compile any SASS you write in `src/sass` with all of the bootstrap scss and outputs a single css file to `development/css`
 
-This task uses Compass which means you can work with Susy or Breakpoint, etc.  However, using Compass means dealing with Ruby. For simple SASS processing you could use gulp-sass and do away with Ruby.
+This task uses Compass which means you can work with Susy or Breakpoint, etc. However, using Compass means dealing with Ruby. For simple SASS processing you could use gulp-sass and do away with Ruby.
 
 `gulp images`
 
-This is the only task not split into development and staging.  Image files are compressed and sent to images in both development and staging...
+This is the only task not split into development and staging. Image files are compressed and sent to images in both development and staging...
 
 `gulp watchdev`
 
-Gulp has the watch function built in.  When developing the `watchdev` task will make sure changes you make to your code-base are reflected in `development` folder and the brower is reloaded.
+Gulp has the watch function built in. When developing the `watchdev` task will make sure changes you make to your code-base are reflected in `development` folder and the brower is reloaded.
 
 `gulp htmlmin`
 
-This task takes the html from development folder and compresses it into staging folder.  Not used in this build process since Gulp-jade can output compressed HTML.
+This task takes the html from development folder and compresses it into staging folder. Not used in this build process since Gulp-jade can output compressed HTML.
 
 `gulp jsuglify`
 
 Compress JS from development to staging
 
-`gulp cssnano`  
+`gulp cssnano`
 
 Compress css from development to staging
 
@@ -189,7 +183,7 @@ Compress css from development to staging
 
 ### Check the following:
 
-- Site should be up and running at:  http://localhost:8080
+- Site should be up and running at: http://localhost:8080
 - Bootstrap 4 should be working
 - Scripts should be loaded and working (check responsive side-bar menu, errors on the console)
 - In terminal gulp should be watching for changes to the code
@@ -232,4 +226,3 @@ Compress css from development to staging
 - [Ruby](https://www.ruby-lang.org/en/)
 - [Ruby Gems](https://rubygems.org)
 - [chruby](https://github.com/postmodern/chruby)
-
