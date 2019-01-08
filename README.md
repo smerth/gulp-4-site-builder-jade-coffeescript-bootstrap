@@ -11,6 +11,36 @@ This project is a static site generator.  It uses Gulp to manage a workflow that
 - adds a base url to the staging build a deploys the site to gh-pages
 
 
+
+> Caveat 1
+>
+> The Gulp build process uses `gulp-compass` which uses an outdated version of Compass.  That version has trouble with the latest version of Bootstrap SCSS.
+>
+> Specifically, you need to edit one file `_root.scss` adding "color" to the statements on line 4 and 8.
+>
+> ```scss
+> ​```scss
+>   // Custom variable values only support SassScript inside `#{}`.
+>   @each $color, $value in $colors {
+>     --color-#{$color}: #{$value};
+>   }
+> 
+>   @each $color, $value in $theme-colors {
+>     --color-#{$color}: #{$value};
+>   }
+> 
+> ​```
+> ```
+
+
+
+> Caveat 2
+>
+> Obviously Gulp is old school, now I only use Web-pack and of course Bower is deprecated.  None-the-less, this generator works and was built to get a grip on Gulp and writing processes with pipes...
+
+
+
+
 ![App Screenshot](https://raw.githubusercontent.com/smerth/bootstrap-jade-and-coffeescript-with-gulp-and-bower/master/screenshot.png)
 
 
