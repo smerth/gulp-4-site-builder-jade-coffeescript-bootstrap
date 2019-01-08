@@ -1,19 +1,19 @@
-# Use Gulp to build a Bootstrap 4 Site
+# Static Site Generator Built with Gulp and using Jade, Coffeescript and Bootstrap
+
+
+This project is a static site generator.  It uses Gulp to manage a workflow that does the following:
+- compiles coffeescript to javascript
+- concatenates your javascript and any libraries you add into a single `main.js` file.
+- compiles SCSS to CSS (Bootstrap!)
+- compiles Jade to HTML
+- generates, and serves a development version of the site on localhost
+- compresses HTML, Javascript, CSS and Images into a staging folder and serves that locally to be able to check the build
+- adds a base url to the staging build a deploys the site to gh-pages
+
 
 ![App Screenshot](https://raw.githubusercontent.com/smerth/bootstrap-jade-and-coffeescript-with-gulp-and-bower/master/screenshot.png)
 
-> #### This site repo uses Gulp to generate a development build and a staging build of a Bootstrap4 site with the following features.
->
-> - HTML is written using Jade syntax.
-> - Write vanilla Javascript or Coffeescript.
-> - A Jade swaps a template with a base url so the navigation links work for the development (localhost) build and staging (github pages) build.
->
-> Bootstrap 4 starter template:
->
-> 1. Collapsing sidebar navigation for mobile
-> 2. Flexbox enabled
-> 3. Sass
-> 4. Example page of equal height cards
+
 
 ## Requirements
 
@@ -25,31 +25,33 @@ Make sure you have the following installed globally:
 - compass
 - bower
 
-## Install this repo
+## Usage
+
+### Clone
 
 ```bash
-cd Bootstrap4_Jade_Coffeescript_Site_with_Gulp_and_Bower/
+git clone https://github.com/smerth/bootstrap-jade-and-coffeescript-with-gulp-and-bower.git YOUR-PROJECT-NAME
 ```
 
-Install npm assets
+### Install npm assets
 
 ```bash
-npm install
+cd YOUR-PROJECT-NAME && npm install
 ```
 
-Install bower assets
+### Install bower assets
 
 ```bash
 gulp bower
 ```
 
-Transfer bower main assets to `src/vendor`
+## Transfer bower main assets to `src/vendor`
 
 ```bash
 gulp vendor
 ```
 
-**Serve the dev build**
+### Serve the dev build
 
 ```bash
 gulp
@@ -57,23 +59,66 @@ gulp
 
 This runs a collection of tasks and serves up the built development folder contents at: http://localhost:8080.
 
-**Build the staging folder**
+### Build the staging folder
 
 ```bash
 gulp stage
 ```
 
-When the development site looks good, run `gulp stage`. This will compress the files in the `development` folder into the `staging` folder and serve up the `staging` folder at: http://localhost:8001.
+This will copy all the necessary files from the `development` folder to the `staging` folder after compression the CSS, HTML and Javascript.  Then it serves the `staging` folder at: http://localhost:8001.
 
-**Push the staging folder to Github Pages**
+### Build staging to deploy to gh-pages
 
-Set up your github repo according to [this](https://github.com/smerth/gulp-gh-pages_test#deploying-to-github)
+First create a repo on Github to host your code. Next you will need to create a `gh-pages` branch.
 
-Then deploy (you have to have run `gulp stage` at least once...)
+When deploying to `gh-pages` the paths to assets need to be prefixed with the project name for your repository.  Otherwise the assets will not be found when the server looks for them.
+
+Instead of build in a gulp task to prefix assets and pages I have opted to add `<base>`element to the layout of the site. 
+
+You can edit the base url @ `base_url.jade`
+
+```jade
+- var base = locals
+case base
+  when 0
+    base(href="/")
+  when 1
+    base(href="http://smerth.github.io/bootstrap-jade-and-coffeescript-with-gulp-and-bower/")   
+  default
+    base(href="/")
+```
+
+Now you can set a local variable for the label `base`
+
+@ terminal
+
+```bash
+base=0
+or 
+base=1
+```
+
+When the local variable `base` is set to `1` the jade compiler will include the `<base>` element in the layout with the url to your project.
+
+When it is set to `0` the jade compiler will include the `<base>` element in the layout with the url set to `/`.
+
+Now build the staging folder
+
+```bash
+gulp stage
+```
+
+
+
+### Push the staging folder to gh-pages
 
 ```bash
 gulp deploy
 ```
+
+You have to have set the base url and built the staging folder first, before you deploy.
+
+Give Github a few minutes to propagate your files around the globe before checking the site.
 
 ## Development Worflow
 
@@ -82,7 +127,7 @@ gulp deploy
 > Compress site to `staging` and then
 > Push `staging` to the live server.
 
-## File structure
+## Directory structure
 
 The installation and build process will add the following folders and contents:
 
