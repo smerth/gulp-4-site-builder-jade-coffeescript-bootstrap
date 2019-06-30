@@ -13,7 +13,7 @@ var gulpSass = require("gulp-sass");
 
 var browserSync = require("browser-sync").create();
 
-var gulpGHPages = require("gulp-gh-pages");
+var gulpGhPages = require("gulp-gh-pages");
 
 // ENVIRONMENT VARIABLES MANAGED IN DOTENV FILES
 require("dotenv").config({
@@ -204,9 +204,8 @@ function watch() {
   gulp.watch([outputDir + "**/*.*"]).on("change", browserSync.reload);
 }
 
-function deploy(cb) {
-  gulp.src("./builds/development/**/*").pipe(gulpGHPages());
-  cb();
+function deploy() {
+  gulp.src("./builds/development/**/*").pipe(gulpGhPages());
 }
 
 var build = gulp.series(
