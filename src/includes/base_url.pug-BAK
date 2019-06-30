@@ -1,0 +1,9 @@
+//- - var base = locals.baseUrl
+//- case base
+//-   when 0
+//-     base(href="/")
+//-   when 1
+//-     base(href="http://smerth.github.io/bootstrap-jade-and-coffeescript-with-gulp-and-bower/")   
+//-   default
+//-     base(href="/")
+//- base(href=baseUrl)

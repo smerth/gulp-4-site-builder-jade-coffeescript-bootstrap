@@ -1,0 +1,54 @@
+extends ../../includes/layouts/layout.pug
+
+block subtitle
+	| | Home
+
+block css
+
+block script
+
+block content
+	.jumbotron.bg-primary
+		h1 This is Bootstrap 4!
+		p
+			| Get a quick start with some great components and layouts.
+	.card-deck-wrapper
+		.card-deck
+			.card
+				img.card-img-top(src='images/png/octopus.png', alt='Card image cap')
+				|       
+				.card-block
+					h4.card-title Card title
+					|         
+					p.card-text
+						| This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+					|         
+					p.card-text
+						small.text-muted Last updated 3 mins ago
+			|     
+			.card
+				img.card-img-top(src='images/png/octopus.png', alt='Card image cap')
+				|       
+				.card-block
+					h4.card-title Card title
+					|         
+					p.card-text This card has supporting text below as a natural lead-in to additional content.
+					|         
+					p.card-text
+						small.text-muted Last updated 3 mins ago
+			|     
+			.card
+				img.card-img-top(src='images/png/octopus.png', alt='Card image cap')
+				|       
+				.card-block
+					h4.card-title Card title
+					|         
+					p.card-text
+						| This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+					|         
+					p.card-text
+						small.text-muted Last updated 3 mins ago
+
+block sidebar-menu
+	include ../../includes/menus/cards-menu
+

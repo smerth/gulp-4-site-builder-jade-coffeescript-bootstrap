@@ -1,0 +1,59 @@
+doctype html
+html(lang="en")
+	head
+		base(href=baseUrl)
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-compatible" content="IE-Edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		<!-- For Bootstrap offscreen menu - the above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		meta(name="description" content="Demonstrator site for Gulp")
+		meta(name="author" content="Smerth")
+
+		link(rel="icon" href="../../favicon.ico")
+		
+		title Octo Garbanzo 
+			block subtitle
+		
+		link(rel='stylesheet', type = "text/css", href='css/style.css')
+		block css
+
+		script(src='js/jquery.min.js')
+		script(src='js/popper.min.js')
+		script(src='js/bootstrap.min.js')
+		script(src='js/main.js')
+		block script
+	
+	body
+		
+
+		.container.main
+			include ../menus/navbar
+			
+			.row.row-offcanvas.row-offcanvas-left
+				.col-xs-12.col-sm-9.col-sm-push-3
+					p.pull-xs-left.hidden-sm-up
+						button.offcanvas-button.btn.btn-primary.btn-xs(type="button", data-toggle="offcanvas") Toggle nav
+					hr.toggle-break.hidden-sm-up
+					
+					include ../header
+
+					// /MAIN PAGE CONTENT
+					block content
+				
+				#sidebar.col-xs-6.col-sm-3.col-sm-pull-9.sidebar-offcanvas
+					.list-group
+						block sidebar-menu
+							
+			hr
+			block footer
+				include ../footer.pug
+		
+		script.
+			
+			$(function () {
+				'use strict'
+
+				$('[data-toggle="offcanvas"]').on('click', function () {
+					$('.row-offcanvas').toggleClass('active')
+				})
+			})

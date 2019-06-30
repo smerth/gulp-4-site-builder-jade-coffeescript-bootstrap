@@ -21,3 +21,7 @@ builds
 
 # Gulp gh-pages 
 .publish
+
+# Env
+.env.development
+.env.production
