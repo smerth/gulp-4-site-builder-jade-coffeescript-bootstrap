@@ -204,8 +204,9 @@ function watch() {
   gulp.watch([outputDir + "**/*.*"]).on("change", browserSync.reload);
 }
 
-function deploy() {
-  gulp.src("./builds/development/**/*").pipe(gulpGhPages());
+function deploy(cb) {
+  gulp.src("./builds/production/**/*").pipe(gulpGhPages());
+  cb();
 }
 
 var build = gulp.series(
