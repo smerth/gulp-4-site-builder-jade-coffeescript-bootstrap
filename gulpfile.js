@@ -155,6 +155,7 @@ function watch() {
   gulp.watch(imageSources, processImageFiles);
   gulp.watch(scssSources, compileScssFiles);
   gulp.watch(pagesSource, compilePugPages);
+  gulp.watch("src/includes/**/*.pug", compilePugPages);
   gulp.watch([outputDir + "**/*.*"]).on("change", browserSync.reload);
 }
 
