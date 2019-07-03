@@ -161,7 +161,7 @@ function watch() {
 
 // Working!
 function deploy(cb) {
-  ghPages.publish(outputDir, cb());
+  ghPages.publish("./builds/production/**/*.*", cb());
 }
 
 var build = gulp.series(
