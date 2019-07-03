@@ -17,3 +17,8 @@
 - In the gulp task the bootstrap scss should be loaded from `node_modules` ~ `"node_modules/bootstrap/scss/bootstrap.scss"` additional scss files should be sourced in the right order.
 - Should be able to change variables in the `custom.scss` file and have them take effect
 - Mixins should be available in `style.scss`
+
+## Re-write the Gulp file
+
+better image processing and better scss transpiling
+https://www.sitepoint.com/automate-css-tasks-gulp/

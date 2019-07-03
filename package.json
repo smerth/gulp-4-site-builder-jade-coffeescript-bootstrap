@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "develop": "gulp",
-    "deploy": "cross-env NODE_ENV=production gulp build && gulp deploy",
+    "deploy": "cross-env NODE_DEBUG=gh-pages NODE_ENV=production gulp build && gulp deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "\"https://github.com/smerth/gulp-4-site-builder-jade-coffeescript-bootstrap\"",
@@ -35,6 +35,8 @@
     "underscore": "^1.8.3",
     "underscore.string": "^3.2.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  },
   "private": true
 }

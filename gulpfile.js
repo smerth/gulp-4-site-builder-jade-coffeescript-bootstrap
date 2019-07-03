@@ -11,9 +11,11 @@ var gulpImagemin = require("gulp-imagemin");
 var imageminPngcrush = require("imagemin-pngcrush");
 var gulpSass = require("gulp-sass");
 
-var browserSync = require("browser-sync").create();
-
+var path = require("path");
+var ghPages = require("gh-pages");
 var gulpGhPages = require("gulp-gh-pages");
+
+var browserSync = require("browser-sync").create();
 
 // ENVIRONMENT VARIABLES MANAGED IN DOTENV FILES
 require("dotenv").config({
@@ -24,7 +26,7 @@ require("dotenv").config({
 var env = process.env.NODE_ENV || "development";
 
 if (env === "development") {
-  outputDir = "builds/development/";
+  outputDir = "./builds/development/";
   sassStyle = "expanded";
   pugOptions = {
     // debug: true
@@ -139,54 +141,6 @@ function compileScssFiles() {
 }
 gulp.task("sass", function() {});
 
-// #################################################################
-// #################################################################
-
-// Create server connections
-// gulp.task("connectdev", function() {
-//   connect.server({
-//     root: "builds/development",
-//     port: 8080,
-//     livereload: true
-//   });
-// });
-// gulp.task("connectstage", function() {
-//   connect.server({
-//     root: "builds/staging",
-//     port: 8001
-//   });
-// });
-
-// gulp.task("watchdev", function() {
-//   gulp.watch(coffeeSource, ["coffee"]);
-//   gulp.watch(jsSource, ["js"]);
-//   gulp.watch("src/templates/**/*.jade", ["jadedev"]);
-//   gulp.watch("src/sass/**/*.scss", ["compass"]);
-//   gulp.watch("src/images/**/*.*", ["images"]);
-// });
-
-/**
- * Push build to gh-pages
- */
-// gulp.task("deploy", function() {
-//   return gulp.src("./builds/staging/**/*").pipe(deploy());
-// });
-
-// gulp.task("default", [
-//   "connectdev",
-//   "vendor",
-//   "jadedev",
-//   "coffee",
-//   "js",
-//   "compass",
-//   "images",
-//   "watchdev"
-// ]);
-
-// function build() {
-//   gulp.series(compileSCSS, concatCSS, concatLibraries, imgmin, jadePages);
-// }
-
 function watch() {
   browserSync.init({
     watchEvents: ["change", "add", "unlink", "addDir", "unlinkDir"],
@@ -204,9 +158,9 @@ function watch() {
   gulp.watch([outputDir + "**/*.*"]).on("change", browserSync.reload);
 }
 
+// Working!
 function deploy(cb) {
-  gulp.src("./builds/production/**/*").pipe(gulpGhPages());
-  cb();
+  ghPages.publish(outputDir, cb());
 }
 
 var build = gulp.series(
@@ -217,6 +171,21 @@ var build = gulp.series(
   processImageFiles,
   compilePugPages
 );
+
+// gulp.task("default", [
+//   "connectdev",
+//   "vendor",
+//   "jadedev",
+//   "coffee",
+//   "js",
+//   "compass",
+//   "images",
+//   "watchdev"
+// ]);
+
+// function build() {
+//   gulp.series(compileSCSS, concatCSS, concatLibraries, imgmin, jadePages);
+// }
 
 // GULP CLEAN
 // - delete the build folder
