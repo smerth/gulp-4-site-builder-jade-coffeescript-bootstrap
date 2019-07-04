@@ -8,9 +8,10 @@ head
   meta(content='Jekyll v3.8.5' name='generator')
   title Gulp Demo | 
     block subtitle
-  link(href='https://getbootstrap.com/docs/4.3/examples/offcanvas/' rel='canonical')
+  link(href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-solarizedlight.min.css" rel="stylesheet")
+  // link(href='https://getbootstrap.com/docs/4.3/examples/offcanvas/' rel='canonical')
   // Bootstrap core CSS
-  link(crossorigin='anonymous' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' rel='stylesheet')
+  // link(crossorigin='anonymous' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' rel='stylesheet')
   style.
     .bd-placeholder-img {
     font-size: 1.125rem;
@@ -26,7 +27,7 @@ head
     }
     }
   // Custom styles for this template
-  link(href='css/style.css' rel='stylesheet')
+  link(href='css/main.css' rel='stylesheet')
   block css
   block script
 body
@@ -58,13 +59,13 @@ body
   .nav-scroller.bg-white.shadow-sm
     nav.nav.nav-underline
       a.nav-link.active(href='#') Dashboard
-      a.nav-link(href='#')
-        | Friends
-        span.badge.badge-pill.bg-light.text-white.align-text-bottom 27
       a.nav-link(href='examples/bottom-navbar-example.html') Bottom navbar
       a.nav-link(href='examples/jumbotron.html') Jumbotron
       a.nav-link(href='examples/grid-examples.html') Grid Examples
-      a.nav-link(href='#') Link
+      a.nav-link(href='examples/images-in-css.html') Image Paths
+      a.nav-link(href='#')
+        | Friends
+        span.badge.badge-pill.bg-light.text-white.align-text-bottom 27
       a.nav-link(href='#') Link
       a.nav-link(href='#') Link
       a.nav-link(href='#') Link
@@ -74,8 +75,13 @@ body
     block content
 
   script(crossorigin='anonymous' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
-  script(crossorigin='anonymous' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
-  script(crossorigin='anonymous' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+  //- script(crossorigin='anonymous' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+  //- script(crossorigin='anonymous' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js")
+  script.
+    Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+  script( src='js/main.js')
   script.
     $(function() {
     "use strict";

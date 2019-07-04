@@ -1,33 +1,47 @@
-// Pull plugins into variables
-var gulp = require("gulp");
-var gulpPug = require("gulp-pug");
-var gulpCoffee = require("gulp-coffee");
-var gutil = require("gulp-util");
-var concat = require("gulp-concat");
-var gulpBrowserify = require("gulp-browserify");
-var gulpif = require("gulp-if");
-var uglify = require("gulp-uglify");
-var gulpImagemin = require("gulp-imagemin");
-var imageminPngcrush = require("imagemin-pngcrush");
-var gulpSass = require("gulp-sass");
+const devBuild =
+  (process.env.NODE_ENV || "development").trim().toLowerCase() ===
+  "development";
 
-var path = require("path");
-var ghPages = require("gh-pages");
-var gulpGhPages = require("gulp-gh-pages");
+var gulp = require("gulp"),
+  noop = require("gulp-noop"),
+  size = require("gulp-size"),
+  postcss = require("gulp-postcss"),
+  gulpPug = require("gulp-pug"),
+  gulpCoffee = require("gulp-coffee"),
+  gutil = require("gulp-util"),
+  concat = require("gulp-concat"),
+  gulpBrowserify = require("gulp-browserify"),
+  gulpif = require("gulp-if"),
+  uglify = require("gulp-uglify"),
+  gulpImagemin = require("gulp-imagemin"),
+  imageminPngcrush = require("imagemin-pngcrush"),
+  gulpSass = require("gulp-sass"),
+  path = require("path"),
+  ghPages = require("gh-pages"),
+  gulpGhPages = require("gulp-gh-pages"),
+  browserSync = require("browser-sync").create(),
+  // browsersync = devBuild ? require("browser-sync").create() : null,
+  sourcemaps = devBuild ? require("gulp-sourcemaps") : null;
 
-var browserSync = require("browser-sync").create();
-
-// ENVIRONMENT VARIABLES MANAGED IN DOTENV FILES
+// You can declare variables in a .env file to make them
+// available in the jade templates
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`
 });
 
-// SET ENVIRONMENT VARIABLES HERE
+// By default the environment is development
 var env = process.env.NODE_ENV || "development";
 
+// Set variables based on the environment
 if (env === "development") {
   outputDir = "./builds/development/";
   sassStyle = "expanded";
+  sassOpts = {
+    sourceMap: require("gulp-sourcemaps"),
+    imagePath: "/images/",
+    precision: 3,
+    errLogToConsole: true
+  };
   pugOptions = {
     // debug: true
     // compileDebug: true
@@ -42,6 +56,11 @@ if (env === "development") {
 } else {
   outputDir = "./builds/production/";
   sassStyle = "compressed";
+  sassOpts = {
+    imagePath: `${process.env.BASE_URL}` + "/images/",
+    precision: 3,
+    errLogToConsole: true
+  };
   pugOptions = {
     debug: false,
     compileDebug: false,
@@ -79,9 +98,10 @@ function transpileCoffeeFiles() {
 // Concatenate JAVSCRIPT LIBRARY files for DEVELOPMENT and PRODUCTION
 // Control the order of processing by listing files in an array
 var librarySources = [
-  "node_modules/jquery/dist/jquery.min.js",
+  // "node_modules/jquery/dist/jquery.min.js",
   "node_modules/popper.js/dist/umd/popper.min.js",
-  "node_modules/bootstrap/dist/js/bootstrap.min.js"
+  "node_modules/bootstrap/dist/js/bootstrap.min.js",
+  "node_modules/prismjs/prism.js"
   // "./src/javascript/rclick.js",
   // "./src/javascript/pixgrid.js",
 ];
@@ -96,7 +116,7 @@ var javascriptSources = ["./src/javascript/**/*.js"];
 
 function concatenateJavascriptFiles() {
   return gulp
-    .src(javascriptSources)
+    .src(librarySources)
     .pipe(concat("main.js"))
     .pipe(
       gulpBrowserify({
@@ -127,19 +147,56 @@ function processImageFiles() {
     .pipe(gulp.dest(outputDir + "images"));
 }
 
-var scssSources = [
-  "src/scss/*.scss"
-  // "node_modules/bootstrap/scss/bootstrap.scss"
-];
+/**************** CSS task ****************/
+const cssConfig = {
+  src: "./src/scss/main.scss",
+  watch: "./src/scss/**/*",
+  build: outputDir + "css/",
+  sassOpts: {
+    sourceMap: devBuild,
+    imagePath: outputDir + "/images/",
+    precision: 3,
+    errLogToConsole: true
+  },
 
-// Compile SCSS files to css
-function compileScssFiles() {
+  postCSS: [
+    // require("usedcss")({
+    //   html: ["index.html"]
+    // }),
+    require("postcss-assets")({
+      loadPaths: ["images/"],
+      basePath: outputDir
+    }),
+    require("autoprefixer")({
+      browsers: ["> 2%"]
+    }),
+    require("cssnano")
+  ]
+};
+
+function css() {
   return gulp
-    .src(scssSources)
-    .pipe(gulpSass())
-    .pipe(gulp.dest(outputDir + "css"));
+    .src(cssConfig.src)
+    .pipe(sourcemaps ? sourcemaps.init() : noop())
+    .pipe(gulpSass(cssConfig.sassOpts).on("error", gulpSass.logError))
+    .pipe(postcss(cssConfig.postCSS))
+    .pipe(sourcemaps ? sourcemaps.write() : noop())
+    .pipe(size({ showFiles: true }))
+    .pipe(gulp.dest(cssConfig.build))
+    .pipe(browserSync ? browserSync.reload({ stream: true }) : noop());
 }
-gulp.task("sass", function() {});
+// exports.compileScssFiles = gulp.series(css);
+
+// var scssSources = ["src/scss/main.scss"];
+
+// // Compile SCSS files to css
+// function compileScssFiles() {
+//   return gulp
+//     .src(scssSources)
+//     .pipe(gulpSass(sassOpts).on("error", gulpSass.logError))
+//     .pipe(gulp.dest(outputDir + "css"));
+// }
+// gulp.task("sass", function() {});
 
 function watch() {
   browserSync.init({
@@ -153,10 +210,19 @@ function watch() {
   gulp.watch(coffeeSources, transpileCoffeeFiles);
   gulp.watch(javascriptSources, concatenateJavascriptFiles);
   gulp.watch(imageSources, processImageFiles);
-  gulp.watch(scssSources, compileScssFiles);
+  gulp.watch("src/scss/**/*.*", css);
   gulp.watch(pagesSource, compilePugPages);
   gulp.watch("src/includes/**/*.pug", compilePugPages);
   gulp.watch([outputDir + "**/*.*"]).on("change", browserSync.reload);
+}
+
+function serve() {
+  browserSync.init({
+    server: {
+      baseDir: outputDir
+    },
+    open: "external"
+  });
 }
 
 // Working!
@@ -166,42 +232,20 @@ function deploy(cb) {
 
 var build = gulp.series(
   moveLibraryFiles,
+  processImageFiles,
   transpileCoffeeFiles,
   concatenateJavascriptFiles,
-  compileScssFiles,
-  processImageFiles,
+
+  css,
+
   compilePugPages
 );
-
-// gulp.task("default", [
-//   "connectdev",
-//   "vendor",
-//   "jadedev",
-//   "coffee",
-//   "js",
-//   "compass",
-//   "images",
-//   "watchdev"
-// ]);
-
-// function build() {
-//   gulp.series(compileSCSS, concatCSS, concatLibraries, imgmin, jadePages);
-// }
 
 // GULP CLEAN
 // - delete the build folder
 
 // GULP RESET
 // - delete the node_modules folder
-
-// GULP DEVELOP
-// - run build tasks and serve
-
-// GULP BUILD
-// - run build tasks in production env
-
-// GULP EXPORTS
-// call from the command line using gulp
 
 var develop = gulp.series(build, watch);
 
@@ -212,11 +256,11 @@ gulp.task("default", develop);
 exports.moveLibraryFiles = moveLibraryFiles;
 exports.transpileCoffeeFiles = transpileCoffeeFiles;
 exports.concatenateJavascriptFiles = concatenateJavascriptFiles;
-exports.compileScssFiles = compileScssFiles;
+exports.css = css;
 exports.processImageFiles = processImageFiles;
 exports.compilePugPages = compilePugPages;
 
-exports.build = build;
 exports.develop = develop;
+exports.build = build;
 exports.watch = watch;
 exports.deploy = deploy;

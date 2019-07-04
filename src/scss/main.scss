@@ -1,0 +1,43 @@
+@import "custom";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+
+@import "offcanvas-layout";
+
+body {
+  padding-top: 3.5rem;
+}
+main {
+  margin-top: 3.5rem;
+}
+
+code,
+pre {
+  font-family: Consolas, Monaco, "Andale Mono", "Lucida Console", monospace;
+  hyphens: none;
+}
+
+pre {
+  max-height: 30em;
+  overflow: auto;
+}
+
+pre > code.highlight {
+  outline: 0.4em solid red;
+  outline-offset: 0.4em;
+}
+
+.myimage {
+  background-image: resolve("jpg/logo.jpg");
+  width: width("jpg/logo.jpg");
+  height: height("jpg/logo.jpg");
+  background-size: size("jpg/logo.jpg");
+}
+
+.mysvg {
+  background-image: inline("svg/octopus.svg");
+  width: width("svg/octopus.svg");
+  height: height("svg/octopus.svg");
+  background-size: 50px 50px;
+  /* url('data:image/svg+xml;charset=utf-8,... */
+}

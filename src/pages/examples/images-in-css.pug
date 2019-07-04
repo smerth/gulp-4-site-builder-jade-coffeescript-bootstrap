@@ -1,0 +1,44 @@
+extends ../../includes/layouts/offcanvas-layout.pug
+
+//- block css
+//-     include ../../includes/css/jumbotron-css.pug
+
+block subtitle
+    | Images in CSS
+
+block content
+  // Add images in SCSS and see the path resolved correctly according to the environment 
+  h1 Resolving Image Paths in SCSS and Jade Templates
+  p
+    | Add images in SCSS and see the path resolved correctly according to the environment
+  hr
+  h2 Add a background image in SCSS
+  pre
+    code.language-scss
+      | .myimage {
+      | background-image: resolve("jpg/logo.jpg");
+      | width: width("jpg/logo.jpg");
+      | height: height("jpg/logo.jpg");
+      | background-size: size("jpg/logo.jpg");
+      | }
+  .myimage
+  hr
+  h2 In-line an SVG in SCSS
+  pre
+    code.language-scss
+      | .mysvg {
+      |  background-image: inline("svg/octopus.svg");
+      |  width: width("svg/octopus.svg");
+      |  height: height("svg/octopus.svg");
+      |  background-size: 50px 50px;
+      |  /* url('data:image/svg+xml;charset=utf-8,... */
+      | }
+  .mysvg
+  hr
+  h2 Resolve an image path in a Jade template using 'baseUrl'
+  pre
+    code.language-pug
+      | img.mr-3(alt='' height='48' src=baseUrl + 'images/svg/octopus.svg' width='48')
+  img.mr-3(alt='' height='48' src=baseUrl + 'images/svg/octopus.svg' width='48')
+  hr
+
