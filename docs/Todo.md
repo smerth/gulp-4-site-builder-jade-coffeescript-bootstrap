@@ -1,24 +1,31 @@
 # Todo
 
-## Clean up Pug demo site
+## Standardize dev/prod paths and variables
 
-- extract a layout from `index.html`
-- make sure you implement the base url include for production
-- go through includes, keep and discard according to the their relevance, using the new layout.
+- there is a cleaner way to write that code
 
-## Fix JS concatenation
+## Gulp task - process JS files
 
-- Try to concatenate library javascript into a single file `main.js`, now that you have the correct `popper.js` file loading
+- concatenate library javascript files
+- concatenate javascript folder content.
+- transpile ES6 to vanilla javascript.
+
+## Clean up bootstrap example pages
+
+- dashboard page
+- profile page
 
 ## Fix SCSS processing
 
-- Currently bootstrap css is loaded from a cnd in index.html
-- It should load from the `build/environment/css` folder
-- In the gulp task the bootstrap scss should be loaded from `node_modules` ~ `"node_modules/bootstrap/scss/bootstrap.scss"` additional scss files should be sourced in the right order.
-- Should be able to change variables in the `custom.scss` file and have them take effect
-- Mixins should be available in `style.scss`
+- Check where all the css is loading from. There should be a single css file loading and no reliance on cdn
 
-## Re-write the Gulp file
+## Gulp task - images
 
-better image processing and better scss transpiling
-https://www.sitepoint.com/automate-css-tasks-gulp/
+- better image processing and better scss transpiling... see:
+  [automate-css-tasks-gulp](https://www.sitepoint.com/automate-css-tasks-gulp/)
+
+## Some resources
+
+- [automate-css-tasks-gulp](https://www.sitepoint.com/automate-css-tasks-gulp/)
+- [gulp-4-walk-through](https://coder-coder.com/gulp-4-walk-through/)
+- [compiling-es6-with-gulp-babel](https://pxpx.co.uk/blog/article/compiling-es6-with-gulp-babel)
