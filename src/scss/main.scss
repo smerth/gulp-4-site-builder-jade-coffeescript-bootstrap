@@ -1,14 +1,14 @@
 @import "custom";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
-
 @import "offcanvas-layout";
+@import "dashboard";
 
 body {
   padding-top: 3.5rem;
 }
 main {
-  margin-top: 3.5rem;
+  // margin-top: 3.5rem;
 }
 
 code,
@@ -27,11 +27,22 @@ pre > code.highlight {
   outline-offset: 0.4em;
 }
 
+.jumbotron {
+  background-image: resolve("jpg/fold.jpg");
+  // width: calc(width("png/penrose-tile.png") / 2);
+  // height: calc(height("png/penrose-tile.png") / 2);
+  // background-size: size("png/penrose-tile.png");
+  background-size: cover;
+  background-position: center center;
+}
+
 .myimage {
-  background-image: resolve("jpg/logo.jpg");
-  width: width("jpg/logo.jpg");
-  height: height("jpg/logo.jpg");
-  background-size: size("jpg/logo.jpg");
+  background-image: resolve("png/penrose-tile.png");
+  width: calc(width("png/penrose-tile.png") / 2);
+  height: calc(height("png/penrose-tile.png") / 2);
+  // background-size: size("png/penrose-tile.png");
+  background-size: calc(width("png/penrose-tile.png") / 2),
+    calc(height("png/penrose-tile.png") / 2);
 }
 
 .mysvg {

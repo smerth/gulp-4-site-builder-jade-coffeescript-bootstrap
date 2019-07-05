@@ -1,0 +1,20 @@
+nav.navbar.fixed-bottom.navbar-expand-sm.navbar-dark.bg-dark
+    a.navbar-brand(href='#') Bottom navbar
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+        li.nav-item.active
+        a.nav-link(href='#')
+            | Home 
+            span.sr-only (current)
+        li.nav-item
+        a.nav-link(href='#') Link
+        li.nav-item
+        a.nav-link.disabled(href='#') Disabled
+        li.nav-item.dropup
+        a#dropdown10.nav-link.dropdown-toggle(href='https://getbootstrap.com/', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Dropup
+        .dropdown-menu(aria-labelledby='dropdown10')
+            a.dropdown-item(href='#') Action
+            a.dropdown-item(href='#') Another action
+            a.dropdown-item(href='#') Something else here

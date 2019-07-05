@@ -42,11 +42,9 @@ body
             | Dashboard
             span.sr-only (current)
         li.nav-item
-          a.nav-link(href='#') Notifications
+          a.nav-link(href='examples/notifications.html') Notifications
         li.nav-item
           a.nav-link(href='#') Profile
-        li.nav-item
-          a.nav-link(href='#') Switch account
         li.nav-item.dropdown
           a#dropdown01.nav-link.dropdown-toggle(aria-expanded='false' aria-haspopup='true' data-toggle='dropdown' href='#') Settings
           .dropdown-menu(aria-labelledby='dropdown01')
@@ -58,11 +56,10 @@ body
         button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
   .nav-scroller.bg-white.shadow-sm
     nav.nav.nav-underline
-      a.nav-link.active(href='#') Dashboard
-      a.nav-link(href='examples/bottom-navbar-example.html') Bottom navbar
-      a.nav-link(href='examples/jumbotron.html') Jumbotron
+      a.nav-link.active(href='#') Example Pages: 
+      a.nav-link(href='examples/bottom-navbar.html') Bottom Navbar
       a.nav-link(href='examples/grid-examples.html') Grid Examples
-      a.nav-link(href='examples/images-in-css.html') Image Paths
+      a.nav-link(href='examples/images.html') Images
       a.nav-link(href='#')
         | Friends
         span.badge.badge-pill.bg-light.text-white.align-text-bottom 27
@@ -81,6 +78,8 @@ body
   script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js")
   script.
     Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+  block script
+  
   script( src='js/main.js')
   script.
     $(function() {

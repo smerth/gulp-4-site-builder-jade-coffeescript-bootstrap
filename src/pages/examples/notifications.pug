@@ -1,0 +1,83 @@
+extends ../../includes/layouts/offcanvas-layout.pug
+
+block subtitle
+    | Notifications
+
+block content
+    .d-flex.align-items-center.p-3.my-3.bg-gradient-light.text-dark.rounded.shadow-sm
+      img.mr-3(alt='' height='48' src=baseUrl + 'images/svg/octopus.svg' width='48')
+      .lh-100
+        h6.mb-0.lh-100 @smerth
+        small Member Since - 2009
+    .my-3.p-3.bg-white.rounded.shadow-sm
+      h6.border-bottom.border-gray.pb-2.mb-0 Recent updates
+      .media.text-muted.pt-3
+        svg.bd-placeholder-img.mr-2.rounded(aria-label='Placeholder: 32x32' focusable='false' height='32' preserveaspectratio='xMidYMid slice' role='img' width='32' xmlns='http://www.w3.org/2000/svg')
+          title Placeholder
+          rect(fill='#007bff' height='100%' width='100%')
+          text(dy='.3em' fill='#007bff' x='50%' y='50%')
+            | 32x32
+        p.media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+          strong.d-block.text-gray-dark @username
+          |  Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          |         condimentum nibh, ut fermentum massa justo sit amet risus.
+      .media.text-muted.pt-3
+        svg.bd-placeholder-img.mr-2.rounded(aria-label='Placeholder: 32x32' focusable='false' height='32' preserveaspectratio='xMidYMid slice' role='img' width='32' xmlns='http://www.w3.org/2000/svg')
+          title Placeholder
+          rect(fill='#e83e8c' height='100%' width='100%')
+          text(dy='.3em' fill='#e83e8c' x='50%' y='50%')
+            | 32x32
+        p.media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+          strong.d-block.text-gray-dark @username
+          |  Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          |         condimentum nibh, ut fermentum massa justo sit amet risus.
+      .media.text-muted.pt-3
+        svg.bd-placeholder-img.mr-2.rounded(aria-label='Placeholder: 32x32' focusable='false' height='32' preserveaspectratio='xMidYMid slice' role='img' width='32' xmlns='http://www.w3.org/2000/svg')
+          title Placeholder
+          rect(fill='#6f42c1' height='100%' width='100%')
+          text(dy='.3em' fill='#6f42c1' x='50%' y='50%')
+            | 32x32
+        p.media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+          strong.d-block.text-gray-dark @username
+          |  Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          |         condimentum nibh, ut fermentum massa justo sit amet risus.
+      small.d-block.text-right.mt-3
+        a(href='#') All updates
+    .my-3.p-3.bg-white.rounded.shadow-sm
+      h6.border-bottom.border-gray.pb-2.mb-0 Suggestions
+      .media.text-muted.pt-3
+        svg.bd-placeholder-img.mr-2.rounded(aria-label='Placeholder: 32x32' focusable='false' height='32' preserveaspectratio='xMidYMid slice' role='img' width='32' xmlns='http://www.w3.org/2000/svg')
+          title Placeholder
+          rect(fill='#007bff' height='100%' width='100%')
+          text(dy='.3em' fill='#007bff' x='50%' y='50%')
+            | 32x32
+        .media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+          .d-flex.justify-content-between.align-items-center.w-100
+            strong.text-gray-dark Full Name
+            a(href='#') Follow
+          span.d-block @username
+      .media.text-muted.pt-3
+        svg.bd-placeholder-img.mr-2.rounded(aria-label='Placeholder: 32x32' focusable='false' height='32' preserveaspectratio='xMidYMid slice' role='img' width='32' xmlns='http://www.w3.org/2000/svg')
+          title Placeholder
+          rect(fill='#007bff' height='100%' width='100%')
+          text(dy='.3em' fill='#007bff' x='50%' y='50%')
+            | 32x32
+        .media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+          .d-flex.justify-content-between.align-items-center.w-100
+            strong.text-gray-dark Full Name
+            a(href='#') Follow
+          span.d-block @username
+      .media.text-muted.pt-3
+        svg.bd-placeholder-img.mr-2.rounded(aria-label='Placeholder: 32x32' focusable='false' height='32' preserveaspectratio='xMidYMid slice' role='img' width='32' xmlns='http://www.w3.org/2000/svg')
+          title Placeholder
+          rect(fill='#007bff' height='100%' width='100%')
+          text(dy='.3em' fill='#007bff' x='50%' y='50%')
+            | 32x32
+        .media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+          .d-flex.justify-content-between.align-items-center.w-100
+            strong.text-gray-dark Full Name
+            a(href='#') Follow
+          span.d-block @username
+      small.d-block.text-right.mt-3
+        a(href='#') All suggestions
+

@@ -6,10 +6,10 @@
   "scripts": {
     "develop": "gulp",
     "build": "cross-env NODE_ENV=production gulp build",
-    "deploy": "cross-env NODE_ENV=production gulp build && gulp deploy",
+    "deploy": "cross-env NODE_ENV=production gulp build && NODE_ENV=production gulp deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "\"https://github.com/smerth/gulp-4-site-builder-jade-coffeescript-bootstrap\"",
+  "repository": "https://github.com/smerth/gulp-4-site-builder-jade-coffeescript-bootstrap",
   "author": "smerth",
   "license": "MIT",
   "devDependencies": {

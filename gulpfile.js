@@ -165,7 +165,8 @@ const cssConfig = {
     // }),
     require("postcss-assets")({
       loadPaths: ["images/"],
-      basePath: outputDir
+      basePath: outputDir,
+      baseUrl: `${pugOptions.locals.baseUrl}`
     }),
     require("autoprefixer")({
       browsers: ["> 2%"]
@@ -227,7 +228,20 @@ function serve() {
 
 // Working!
 function deploy(cb) {
-  ghPages.publish("./builds/production/**/*.*", cb());
+  ghPages.publish(
+    outputDir,
+    {
+      src: "**/*",
+      branch: "gh-pages",
+      dest: ".",
+      dotfiles: false,
+      add: false,
+      message: "Auto-generated commit",
+      push: true,
+      silent: false
+    },
+    cb()
+  );
 }
 
 var build = gulp.series(
