@@ -168,9 +168,6 @@ const cssConfig = {
       basePath: outputDir,
       baseUrl: `${pugOptions.locals.baseUrl}`
     }),
-    require("autoprefixer")({
-      browsers: ["> 2%"]
-    }),
     require("cssnano")
   ]
 };
