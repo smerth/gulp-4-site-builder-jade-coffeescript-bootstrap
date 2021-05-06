@@ -45,7 +45,7 @@
     "postcss-assets": "^5.0.0",
     "prismjs": "^1.16.0",
     "tether": "^1.1.1",
-    "underscore": "^1.8.3",
+    "underscore": "^1.12.1",
     "underscore.string": "^3.2.3",
     "usedcss": "^1.0.7"
   },
