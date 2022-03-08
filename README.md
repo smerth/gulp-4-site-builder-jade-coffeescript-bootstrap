@@ -17,17 +17,17 @@ This project is a static site generator.  It uses Gulp to manage a workflow that
 > The Gulp build process uses `gulp-compass` which uses an outdated version of Compass.  That version has trouble with the latest version of Bootstrap SCSS.
 >
 > Specifically, you need to edit one file `_root.scss` adding "color" to the statements on line 4 and 8.
->
-> ```scss
->   // Custom variable values only support SassScript inside `#{}`.
->   @each $color, $value in $colors {
->     --color-#{$color}: #{$value};
->   }
-> 
->   @each $color, $value in $theme-colors {
->     --color-#{$color}: #{$value};
->   }
-> ```
+
+
+```scss
+// Custom variable values only support SassScript inside `#{}`.
+  @each $color, $value in $colors {
+    --color-#{$color}: #{$value};
+    }
+  @each $color, $value in $theme-colors {
+    --color-#{$color}: #{$value};
+    }
+```
 
 
 
